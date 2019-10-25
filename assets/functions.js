@@ -1,8 +1,9 @@
   $(document).ready(function() {
 
 
-    $('#cityBtn').on('click', function search(e) {
+    $('#cityBtn').on('keypress click', function search(e) {
         e.preventDefault()
+        if (e.which === 13 || e.type === 'click') {
         var city = $('#citySearch').val();  
         if(city!="") {
             $.ajax({
@@ -13,6 +14,7 @@
                var display = show(data);
                $('#show').html(display);
                $('#city').val('');
+                date(data)
             })
         }else{
             $('#errorMsg').html("Please enter a city")
@@ -25,8 +27,14 @@
           localStorage.setItem('searchedCities', JSON.stringify(searchedCities))
 
           $('#citySearch').empty();
+
+          if (searchedCities.length === 10) {
+              console.log('worked')
+              searchedCities.shift();
+          }
           appendSearches()
-        });
+
+    }});
 
     var searchedCities = JSON.parse(localStorage.getItem('searchedCities')) || []
 
@@ -36,17 +44,16 @@
         var el = $("<li>")
         el.addClass("list-group-item")
         el.attr("data-city", searchedCities[x].name)
-        $("#showSearch").append(el)
+        $("#showSearch").prepend(el)
         
         //$(this).data()
-        //Thanks fellas!
         el.click(function(e) {
-            stuff(e.target.innerText)
+            recall(e.target.innerText)
         });
         el.append(searchedCities[x].name);
     }}
 
-    function stuff(cityName) {
+    function recall(cityName) {
             $.ajax({
                 url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + 
                 cityName + '&apikey=df520520403dc5e0455758f5b172bc5e&units=imperial',
@@ -66,4 +73,22 @@
             '<h4><strong>Wind Speed: </strong>' + data.list[0].wind.speed + '</h4>' +
             '<h4><strong>Humidity: </strong>' + data.list[0].main.humidity + '</h4>'
         )};
-    });
+
+ var el = $("<li>")
+        el.addClass("list-group-item")
+        el.attr("data-city", searchedCities[x].name)
+        $("#showSearch").prepend(el)
+
+    function date(data){
+        $('#test').empty();
+        for (i = 0; i <= 45; i+=8) {
+        var date = new Date(data.list[i].dt * 1000)
+        console.log(date.toISOString())
+        console.log(data.list[i].main.temp)
+        var para = $("<p>")
+        para.html(date + data.list[i].main.temp +'\xB0F')
+        $('#test').append(para)
+        }
+    }
+
+    }); //ends doc ready function

@@ -14,21 +14,41 @@
         <h1 class="text-center topText">Weather Dashboard</h1>
         <span id = "errorMsg"></span>
         <div class="input-group mb-3">
-        <div class = "row form-group form-inline" id="rowDiv">
+            <div class = "row form-group form-inline" id="rowDiv">
             <input type = "text" id = "citySearch" name = "city" class="form-control" placeholder="City Name">
             <button id = "cityBtn" class = "btn btn-primary"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">Search</button>
-        </div></div>
-        <div class="card float-right">
-            <div class="card-body" id = "cityCard">
             </div>
         </div>
-        <div class="card float-left" style="width: 18rem;">
-                <ul class="list-group list-group-flush" id = "showSearch">
-                    <li class="list-group-item">Searched Cities</li>
-                </ul>
+        <div class = "d-flex p-2">
+            <div class="card float-right">
+                <div class="card-body" id = "cityCard">
                 </div>
-    <div class = "showSearch"></div>
+            </div>
+            <div class="card float-left" style="width: 18rem;">
+                    <ul class="list-group list-group-flush" id = "showSearch">
+                        <li class="list-group-item">Searched Cities</li>
+                    </ul>
+                    </div>
+            <div class = "showSearch"></div>
+<!-- 5 day forecast-->
+            <div class="d-flex flex-row">
+                <div class = "row relative-bottom p-2">
+                    <div class = "column">
+                        <h2 class = "text-center">5 Day Forecast:</h2>
+                        <div class="card text-white bg-primary" style="max-width: 20rem;">
+                            <div class="card-body">
+                            <h4 id = "cardTitle" class="card-title">Sun Gone</h4>
+                            <p id = "cardText" class="card-text"> </p>
+                            </div>
+                        </div> 
+                    </div>         
+                </div>
+            </div>
+            <div id = "test"></div>
+        </div>
     </div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src = "assets/functions.js"></script>
 </body>
