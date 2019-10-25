@@ -7,7 +7,7 @@
         var city = $('#citySearch').val();  
         if(city!="") {
             $.ajax({
-                url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&apikey=df520520403dc5e0455758f5b172bc5e&units=imperial',
+                url: 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&apikey=df520520403dc5e0455758f5b172bc5e&units=imperial',
                 method:"GET",
             })  
             .then(function(data) {
@@ -55,7 +55,7 @@
 
     function recall(cityName) {
             $.ajax({
-                url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + 
+                url: 'https://api.openweathermap.org/data/2.5/forecast?q=' + 
                 cityName + '&apikey=df520520403dc5e0455758f5b172bc5e&units=imperial',
                 method:"GET",
             })  
