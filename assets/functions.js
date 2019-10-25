@@ -74,11 +74,6 @@
             '<h4><strong>Humidity: </strong>' + data.list[0].main.humidity + '</h4>'
         )};
 
- var el = $("<li>")
-        el.addClass("list-group-item")
-        el.attr("data-city", searchedCities[x].name)
-        $("#showSearch").prepend(el)
-
     function date(data){
         $('#test').empty();
         for (i = 0; i <= 45; i+=8) {
