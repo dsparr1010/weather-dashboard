@@ -8,46 +8,46 @@
     <title>Weather Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link src = "assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel = "stylesheet" type = "text/css" href = "assets/css/style.css">
 </head>
-<body>
-    <div class = "container">
-        <h1 class="text-center topText">Weather Dashboard</h1>
-        <span id = "errorMsg"></span>
-        <div class="input-group mb-3">
-            <div class = "row form-group form-inline" id="rowDiv">
-            <input type = "text" id = "citySearch" name = "city" class="form-control" placeholder="City Name">
-            <button id = "cityBtn" class = "btn btn-primary"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">Search</button>
+<h2 class = "topText title is-2 has-text-centered">Weather Dashboard</h2>
+<div class= "container">
+    <div class="columns">
+        <div class="card column is-one-third text-center">
+            <div class = "tile">
+            <span id = "errorMsg"></span>
+                <div class="field">
+                    <div class="control">
+                       <div class = "row form-group form-inline" id="rowDiv">
+                            <input type = "text" id = "citySearch" name = "city" class="form-control" placeholder="City Name">
+                            <button id = "cityBtn" class = "btn btn-primary"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">Search</button>
+                        </div>
+                    </div>
+                    <br>
+                <div class="content">
+                    <ul class="list-group list-group-flush text-center" id = "showSearch">
+                        <h5><li class="list-group-item">Searched Cities </li></h5>
+                    </ul>
+                </div>
+                </div>
             </div>
         </div>
-        <div class = "d-flex p-2">
-            <div class="card float-right">
-                <div class="card-body" id = "cityCard">
-                </div>
+        <div class = "column cityCard">
+            <div class="card-body" id = "cityCard">
             </div>
-            <div class="card float-left" style="width: 18rem;">
-                    <ul class="list-group list-group-flush" id = "showSearch">
-                        <li class="list-group-item">Searched Cities</li>
-                    </ul>
-                    </div>
-            <div class = "showSearch"></div>
-<!-- 5 day forecast-->
-            <div class="d-flex flex-row">
-                <div class = "row relative-bottom p-2">
-                    <div class = "column">
-                        <h2 class = "text-center">5 Day Forecast:</h2>
-                        <div class="card text-white bg-primary" style="max-width: 20rem;">
-                            <div class="card-body">
-                            <h4 id = "cardTitle" class="card-title">Sun Gone</h4>
-                            <p id = "cardText" class="card-text"> </p>
-                            </div>
+            <div class = "column">
+                    <h2 class = "text-center fiveDay">5 Day Forecast:
+                        <span id = "testCity"></span></h2>
+                        <div id = "test" ></div>
                         </div> 
-                    </div>         
-                </div>
-            </div>
-            <div id = "test"></div>
+            </div>  
         </div>
     </div>
+</div><!--closes container-->
+
+<body>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

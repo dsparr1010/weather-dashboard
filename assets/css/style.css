@@ -1,0 +1,45 @@
+body {
+    background-color : lightblue;
+}
+.topText {
+    background-color :darkgray;
+    color : white;
+    border-bottom : 4px solid black;
+    padding : 2%;
+}
+.tile {
+    height: auto;
+    display:flex;
+    flex-direction:column;
+    justify-content : center;
+}
+#rowDiv {
+    justify-content : center;
+    padding-left : 5%;
+    position : relative;
+}
+.list-group {
+    padding-right : 8%;
+}
+.fiveDay {
+    font-weight : bold;
+    font-size: 25px;
+    text-justify: left;
+}
+#test {
+    padding : 0%;
+    display: flex;
+    flex-flow: row wrap
+    max-width:24rem;
+    margin-left : -2%;
+}
+.bg-primary {
+    height : auto;
+    position : relative;
+}
+.is-one-third {
+    background-color: lightcyan;
+}
+#cityCard {
+    font-size: 30px;
+}
