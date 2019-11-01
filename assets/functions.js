@@ -1,5 +1,5 @@
+  
   $(document).ready(function() {
-
 
     $('#cityBtn').on('keypress click', function search(e) {
         e.preventDefault()
@@ -14,7 +14,6 @@
             .then(function(data) {
                var display = show(data);
                $('#show').html(display);
-              // $('#city').val('');
                $('#citySearch').val('');
                date(data)
             })
@@ -31,7 +30,6 @@
           $('#citySearch').empty();
 
           if (searchedCities.length === 10) {
-              console.log('worked')
               searchedCities.shift();
           }
           appendSearches()
@@ -47,7 +45,6 @@
         el.attr("data-city", searchedCities[x].name)
         $("#showSearch").prepend(el)
         
-        //$(this).data()
         el.click(function(e) {
             recall(e.target.innerText)
         });
@@ -60,23 +57,35 @@
                 cityName + '&apikey=df520520403dc5e0455758f5b172bc5e&units=imperial',
                 method:"GET",
             })  
-            .then(function(data) {
+            .then(function(data) {       
             var display = show(data);
             $('#show').html(display);
             $('#citySearch').empty();
             date(data)
             })
-
     }
 
     function show(data) {
+        var lat = data.city.coord.lat
+        var lon = data.city.coord.lon
+        $.ajax( {
+            url: 'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=df520520403dc5e0455758f5b172bc5e&cnt=1&lon=' 
+            + lon + '&lat=' + lat,
+            method : 'GET'
+        })
+        .then(function(uvData) {
+            var uvIndex = uvData[0].value
+
         $('#cityCard').html(
             '<h1><strong>Current Weather for: ' + data.city.name + ", " + data.city.country + '</h1>'+  
             '<h4><strong>Weather: </strong>' + data.list[0].weather[0].description + '<img src=http://openweathermap.org/img/w/' + data.list[0].weather[0].icon + '.png alt= Icon depicting current weather.>' +
             '<h4><strong>Temperature: </strong>' + data.list[0].main.temp + '\xB0F'+ '</h4>' +
             '<h4><strong>Wind Speed: </strong>' + data.list[0].wind.speed + '</h4>' +
-            '<h4><strong>Humidity: </strong>' + data.list[0].main.humidity + '% </h4>'
-        )};
+            '<h4><strong>Humidity: </strong>' + data.list[0].main.humidity + '% </h4>' +
+            '<p class="bg-danger text-white p-2 border rounded" >' + 'UV Index: ' + uvIndex
+        )
+      })
+    };
 
     function date(data){
         $('#test').empty();

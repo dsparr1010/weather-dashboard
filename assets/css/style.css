@@ -43,3 +43,6 @@ body {
 #cityCard {
     font-size: 30px;
 }
+.bg-danger {
+    max-width: 40%;
+}
